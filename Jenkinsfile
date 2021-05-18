@@ -1,7 +1,10 @@
 pipeline {
     // 스테이지 별로 다른 거
     agent any//어떤노드쓸껀지 아무거나 하자한거
-
+  //  environment {
+   //     ENV = "PROD"
+   // }
+    
     triggers {
         pollSCM('*/3 * * * *') //크론 snyt  3분내로 트리거 지정
     }
@@ -120,7 +123,7 @@ pipeline {
 
             dir ('./server'){
                 sh '''
-                docker build . -t server --build-arg env=${PROD}
+                docker build . -t server --build-arg 
                 ''' //env=${PROD}
             }
           }

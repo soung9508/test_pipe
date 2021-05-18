@@ -144,6 +144,7 @@ pipeline {
 
             dir ('./server'){
                 sh '''
+                docker rm -f $(docker ps -ap)
                 docker run -p 80:80 -d server  
                 '''
             }//원래 있던 이미지 지우고 새서버 배포    docker rm -f $(docker ps -aq)

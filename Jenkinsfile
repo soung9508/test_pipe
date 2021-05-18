@@ -14,6 +14,7 @@ pipeline {
       AWS_SECRET_ACCESS_KEY = credentials('awsSecretAccessKey')
       AWS_DEFAULT_REGION = 'eu-west-2'
       HOME = '.' // Avoid npm root owned
+      ENV="PROD"
     }
 
     stages {  
@@ -123,7 +124,7 @@ pipeline {
 
             dir ('./server'){
                 sh '''
-                docker build . -t server --build-arg 
+                docker build . -t server --build-arg env=${PROD}
                 ''' //env=${PROD}
             }
           }
